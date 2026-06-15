@@ -1,0 +1,16 @@
+// scss/all.scss
+@import "bootstrap/scss/functions";
+
+// 1. 先匯入變數跟工具（要被後面用到，所以放最前面）
+@import "./utils/variables";
+@import "./utils/variables-dark";
+
+// 2. 再匯入 Bootstrap（讓 Bootstrap 吃到你的變數）
+@import "bootstrap/scss/bootstrap";
+@import "bootstrap-icons/font/bootstrap-icons.css";
+@import "./utils/utilities";
+@import "bootstrap/scss/utilities/api";
+
+// 3. 最後才是你自己的樣式
+@import "base/base";
+@import "./components/nav";
