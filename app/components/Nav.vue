@@ -32,7 +32,7 @@
             >
           </li>
           <li class="py-1 px-3">
-            <NuxtLink to="/" class="nav-link" aria-current="page"
+            <NuxtLink to="/blog" class="nav-link" aria-current="page"
               >部落格</NuxtLink
             >
           </li>
