@@ -151,3 +151,34 @@ p {
 .line-height {
   line-height: 1.5;
 }
+
+/* 響應式字級 */
+@media (max-width: 768px) {
+  .display-1 {
+    font-size: 80px;
+  }
+  .display-2 {
+    font-size: 56px;
+  }
+  .fs-heading-xxx-large {
+    font-size: 40px;
+  }
+  .fs-heading-xx-large {
+    font-size: 32px;
+  }
+  .fs-heading-x-large {
+    font-size: 28px;
+  }
+  .fs-heading-large {
+    font-size: 26px;
+  }
+  .fs-heading-medium {
+    font-size: 22px;
+  }
+  .fs-heading-small {
+    font-size: 20px;
+  }
+  .fs-paragraph-medium {
+    font-size: 14px;
+  }
+}

@@ -1,13 +1,13 @@
 <template>
   <section class="bg-primary-900">
-    <div class="container p-20">
+    <div class="container p-6 p-md-20">
       <div class="row">
-        <div class="col-md-5">
-          <div class="mb-md-6">
+        <div class="col-md-5 mb-8 mb-md-0">
+          <div class="mb-4 mb-md-6">
             <p class="fs-heading-xxx-small text-neutral-0">與我聯繫</p>
             <h2 class="fs-heading-xxx-large text-neutral-0">CONTACT</h2>
           </div>
-          <div class="mb-md-6">
+          <div class="mb-4 mb-md-6">
             <p class="fs-paragraph-medium mb-1 text-neutral-0">
               若有數位產品設計和開發相關問題
             </p>
@@ -16,7 +16,7 @@
             </p>
           </div>
           <div class="mt-md-17">
-            <div class="d-flex gap-3 mb-md-6">
+            <div class="d-flex gap-3 mb-4 mb-md-6">
               <NuxtLink to="https://www.instagram.com/">
                 <span
                   class="d-flex align-items-center justify-content-center border border-1 text-neutral-0 rounded-circle"
@@ -54,8 +54,8 @@
         <div class="col-md-7">
           <form>
             <div class="row">
-              <div class="col-6">
-                <div class="form-floating mb-md-6">
+              <div class="col-12 col-md-6">
+                <div class="form-floating mb-4 mb-md-6">
                   <input
                     type="text"
                     class="form-control text-neutral-0 border-neutral-0"
@@ -65,8 +65,8 @@
                   <label for="contactName" class="text-neutral-0">姓名</label>
                 </div>
               </div>
-              <div class="col-6">
-                <div class="form-floating mb-md-6">
+              <div class="col-12 col-md-6">
+                <div class="form-floating mb-4 mb-md-6">
                   <input
                     type="tel"
                     class="form-control text-neutral-0 border-neutral-0"
@@ -80,7 +80,7 @@
               </div>
             </div>
 
-            <div class="form-floating mb-md-6">
+            <div class="form-floating mb-4 mb-md-6">
               <input
                 type="email"
                 class="form-control text-neutral-0 border-neutral-0"
@@ -90,7 +90,7 @@
               <label for="contactEmail" class="text-neutral-0">電子信箱</label>
             </div>
 
-            <div class="form-floating mb-md-6">
+            <div class="form-floating mb-4 mb-md-6">
               <textarea
                 class="form-control text-neutral-0 border-neutral-0 rounded-40"
                 id="contactRemark"

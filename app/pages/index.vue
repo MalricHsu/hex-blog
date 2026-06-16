@@ -1,15 +1,11 @@
-<script setup lang="ts">
-import Subscription from "~/components/Subscription.vue";
-</script>
-
 <template>
   <!-- 介紹區 -->
-  <section class="bg-primary-50">
+  <section class="bg-primary-50 py-10 py-md-0">
     <div class="container">
-      <div class="row align-items-center w-100">
-        <div class="col-md-5">
-          <div class="mb-md-15">
-            <h1 class="fs-heading-xxx-large mb-md-6">
+      <div class="row align-items-center">
+        <div class="col-md-5 mb-8 mb-md-0">
+          <div class="mb-6 mb-md-15">
+            <h1 class="fs-heading-xxx-large mb-3 mb-md-6">
               Hello<br />
               I’m Nelson
             </h1>
@@ -23,7 +19,7 @@ import Subscription from "~/components/Subscription.vue";
           <div>
             <NuxtLink
               to="/contact"
-              class="btn btn-neutral-700 rounded-999 me-md-6"
+              class="btn btn-neutral-700 rounded-999 me-md-6 me-3"
               >與我聯絡</NuxtLink
             >
             <NuxtLink to="/" class="btn btn-outline-neutral-700 rounded-999"
@@ -34,6 +30,7 @@ import Subscription from "~/components/Subscription.vue";
 
         <div class="col-md-7">
           <img
+            class="w-100"
             src="https://github.com/hexschool/2022-web-layout-training/blob/main/2026-web-camp/index_person.png?raw=true"
             alt=""
           />
@@ -42,25 +39,25 @@ import Subscription from "~/components/Subscription.vue";
     </div>
   </section>
   <!-- 服務項目 -->
-  <section class="bg-primary-900 py-md-20">
+  <section class="bg-primary-900 py-10 py-md-20">
     <div class="container">
-      <div class="mb-md-8">
+      <div class="mb-6 mb-md-8">
         <p class="fs-heading-xxx-small text-neutral-0">服務項目</p>
         <h2 class="fs-heading-xxx-large text-neutral-0">SERVICES</h2>
       </div>
-      <div class="row">
+      <div class="row service-cards">
         <ServiceCard />
       </div>
     </div>
   </section>
   <!-- 專案作品 -->
-  <section class="py-md-20">
+  <section class="py-10 py-md-20">
     <div class="container">
-      <div class="mb-md-8">
+      <div class="mb-6 mb-md-8">
         <p class="fs-heading-xxx-small text-center">專案作品</p>
         <h2 class="fs-heading-xxx-large text-center">PROJECTS</h2>
       </div>
-      <div class="mb-md-8">
+      <div class="mb-6 mb-md-8">
         <ProjectCard />
       </div>
       <div class="text-center">
@@ -71,9 +68,11 @@ import Subscription from "~/components/Subscription.vue";
     </div>
   </section>
   <!-- 部落格 -->
-  <section class="py-md-20">
+  <section class="py-10 py-md-20">
     <div class="container">
-      <div class="d-flex justify-content-between align-items-center mb-md-8">
+      <div
+        class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3 mb-6 mb-md-8"
+      >
         <div>
           <p class="fs-heading-xxx-small">部落格</p>
           <h2 class="fs-heading-xxx-large">BLOGS</h2>
@@ -92,3 +91,23 @@ import Subscription from "~/components/Subscription.vue";
   <!-- 訂閱 -->
   <Subscription />
 </template>
+<style scoped>
+/* SERVICES 卡片：手機改成可左右滑動，md 以上維持四欄 */
+@media (max-width: 768px) {
+  .service-cards {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    /* 滑動更順、藏掉醜捲軸 */
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  /* 隱藏滾動條 */
+  .service-cards::-webkit-scrollbar {
+    display: none;
+  }
+  .service-cards :deep(.col-12) {
+    flex: 0 0 80%; /* 每張佔 80%，下一張露一角提示可滑 */
+    max-width: 80%;
+  }
+}
+</style>

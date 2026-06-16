@@ -3,7 +3,7 @@
   <section
     :style="`background: url('https://images.unsplash.com/photo-1510851896000-498520af2236?w=2000&q=80&auto=format&fit=crop') center/cover;`"
   >
-    <div class="container py-md-22">
+    <div class="container py-12 py-md-22">
       <div class="text-center">
         <h2 class="fs-heading-xxx-large text-neutral-0 mb-2">CONTACT</h2>
         <p class="fs-heading-xx-large text-neutral-0">聯絡我們</p>
@@ -13,11 +13,11 @@
 
   <!-- 聯絡表單 -->
   <section>
-    <div class="container py-md-20">
+    <div class="container py-10 py-md-20">
       <div class="row justify-content-center">
         <div class="col-md-8">
-          <p class="fs-paragraph-medium text-center mb-md-10">
-            有任何專案合作或設計需求嗎？歡迎填寫以下表單，我會盡快與你聯繫。
+          <p class="fs-paragraph-medium text-center mb-8 mb-md-10">
+            有任何專案合作或設計需求嗎？<br />歡迎填寫以下表單，我會盡快與你聯繫。
           </p>
 
           <form>
@@ -43,7 +43,7 @@
 
             <div class="form-floating mb-4">
               <textarea
-                class="form-control"
+                class="form-control rounded-40"
                 id="message"
                 placeholder="訊息內容"
                 style="height: 160px"

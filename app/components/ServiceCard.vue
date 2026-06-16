@@ -1,6 +1,10 @@
 <template>
-  <div v-for="item in service" :key="item.id" class="col-md-3">
-    <div class="bg-neutral-0 p-md-6">
+  <div
+    v-for="item in service"
+    :key="item.id"
+    class="col-12 col-md-3 mb-4 mb-md-0"
+  >
+    <div class="bg-neutral-0 p-4 p-md-6 h-100">
       <div class="mb-3 d-flex justify-content-between">
         <div>
           <span class="fs-heading-xxx-small">{{ item.code }}</span>

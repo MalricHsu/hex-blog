@@ -3,10 +3,13 @@
     v-for="(project, index) in topThree"
     :key="project.id"
     class="position-relative overflow-hidden d-flex align-items-center"
-    :class="{ 'mb-md-6': index < topThree.length - 1 }"
+    :class="{ 'mb-4 mb-md-6': index < topThree.length - 1 }"
     :style="`background: url('${project.imagesPc}') center/cover; min-height: 397px;`"
   >
-    <div class="ms-md-7 bg-primary-50 p-md-8" style="max-width: 386px">
+    <div
+      class="mx-3 ms-md-7 me-md-0 bg-primary-50 p-6 p-md-8"
+      style="max-width: 386px"
+    >
       <time
         datetime="2025-10-26"
         class="d-block fs-paragraph-small text-center mb-3"

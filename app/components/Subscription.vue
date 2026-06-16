@@ -10,7 +10,7 @@
     <!-- 內容 -->
     <div class="container position-relative">
       <div class="row">
-        <div class="col-md-5">
+        <div class="col-md-5 px-0 px-md-3">
           <img
             src="https://github.com/hexschool/2022-web-layout-training/blob/main/2026-web-camp/subscription.png?raw=true"
             alt="訂閱"
@@ -18,12 +18,12 @@
           />
         </div>
         <div class="col-md-7">
-          <div class="p-20">
-            <div class="mb-md-6">
+          <div class="p-6 p-md-20">
+            <div class="mb-4 mb-md-6">
               <p class="fs-heading-xxx-small text-neutral-0">訂閱電子報</p>
               <h2 class="fs-heading-xxx-large text-neutral-0">SUBSCRIPTION</h2>
             </div>
-            <p class="fs-paragraph-medium text-neutral-0 mb-md-6">
+            <p class="fs-paragraph-medium text-neutral-0 mb-4 mb-md-6">
               你也在追求設計美感與技術落地的完美平衡嗎？作為資深設計師兼工程師，我深知跨領域協作的痛點。訂閱電子報，我將分享如何利用
               AI 工具提升產能！
             </p>

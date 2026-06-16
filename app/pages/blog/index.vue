@@ -3,7 +3,7 @@
   <section
     :style="`background: url('https://github.com/hexschool/2022-web-layout-training/blob/main/2026-web-camp/blog_banner.png?raw=true') center/cover;`"
   >
-    <div class="container py-md-22">
+    <div class="container py-12 py-md-22">
       <div class="text-center mb-md-10">
         <h2 class="fs-heading-xxx-large text-neutral-0 mb-2">BLOGS</h2>
         <p class="fs-heading-xx-large text-neutral-0">部落格</p>
@@ -12,14 +12,16 @@
   </section>
   <!--列表區  -->
   <section>
-    <div class="container py-md-20">
+    <div class="container py-10 py-md-20">
       <div class="row">
         <div class="col-md-2">
-          <ul class="list-unstyled">
+          <ul
+            class="list-unstyled d-flex flex-md-column overflow-auto mb-6 mb-md-0"
+          >
             <li
               v-for="item in blogList"
               :key="item.id"
-              class="fs-heading-xx-small py-3 mx-auto text-center"
+              class="fs-heading-xx-small flex-shrink-0 py-2 py-md-3 px-3 text-center"
               :class="{ active: item.id === blogClick }"
               @click="blogClick = item.id"
               :style="{ cursor: 'pointer' }"
@@ -38,15 +40,15 @@
             >
               <NuxtLink :to="blog.path">
                 <div class="row">
-                  <div class="col-md-6">
+                  <div class="col-md-6 mb-3 mb-md-0">
                     <img
                       :src="blog.image"
                       :alt="blog.title"
-                      class="img-fluid object-fit-cover"
+                      class="img-fluid w-100 object-fit-cover"
                     />
                   </div>
                   <div
-                    class="col-lg-6 d-flex flex-column justify-content-center"
+                    class="col-md-6 d-flex flex-column justify-content-center"
                   >
                     <div
                       class="d-flex align-items-center justify-content-start mb-3"
