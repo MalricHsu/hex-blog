@@ -33,57 +33,61 @@
             <li
               class="card-item"
               :class="{ 'mb-6': index < filterBlog.length - 1 }"
-              v-for="(article, index) in filterBlog"
-              :key="article.id"
+              v-for="(blog, index) in filterBlog"
+              :key="blog.id"
             >
-              <div class="row">
-                <div class="col-md-6">
-                  <img
-                    :src="article.image"
-                    :alt="article.title"
-                    class="img-fluid object-fit-cover"
-                  />
-                </div>
-                <div class="col-lg-6 d-flex flex-column justify-content-center">
-                  <div
-                    class="d-flex align-items-center justify-content-start mb-3"
-                  >
-                    <template
-                      v-for="(category, index) in article.categories"
-                      :key="category"
-                    >
-                      <span class="fs-paragraph-medium">{{ category }}</span>
-                      <span
-                        class="mx-2"
-                        v-if="index < article.categories.length - 1"
-                        >·</span
-                      >
-                    </template>
+              <NuxtLink :to="blog.path">
+                <div class="row">
+                  <div class="col-md-6">
+                    <img
+                      :src="blog.image"
+                      :alt="blog.title"
+                      class="img-fluid object-fit-cover"
+                    />
                   </div>
-                  <h3 class="fs-heading-small mb-3">
-                    {{ article.title }}
-                  </h3>
                   <div
-                    class="d-flex justify-content-lg-between align-content-center"
+                    class="col-lg-6 d-flex flex-column justify-content-center"
                   >
-                    <time class="fs-paragraph-small" :datetime="article.date">{{
-                      article.dateFormatted
-                    }}</time>
-                    <div class="d-flex align-items-center">
-                      <span class="d-flex me-3">
-                        <span class="material-symbols-outlined me-1">
-                          visibility </span
-                        >{{ article.views }} views
-                      </span>
-                      <span class="d-flex">
-                        <span class="material-symbols-outlined me-1">
-                          share </span
-                        >{{ article.shares }} shares
-                      </span>
+                    <div
+                      class="d-flex align-items-center justify-content-start mb-3"
+                    >
+                      <template
+                        v-for="(category, index) in blog.categories"
+                        :key="category"
+                      >
+                        <span class="fs-paragraph-medium">{{ category }}</span>
+                        <span
+                          class="mx-2"
+                          v-if="index < blog.categories.length - 1"
+                          >·</span
+                        >
+                      </template>
+                    </div>
+                    <h3 class="fs-heading-small mb-3">
+                      {{ blog.title }}
+                    </h3>
+                    <div
+                      class="d-flex justify-content-lg-between align-content-center"
+                    >
+                      <time class="fs-paragraph-small" :datetime="blog.date">{{
+                        blog.dateFormatted
+                      }}</time>
+                      <div class="d-flex align-items-center">
+                        <span class="d-flex me-3">
+                          <span class="material-symbols-outlined me-1">
+                            visibility </span
+                          >{{ blog.views }} views
+                        </span>
+                        <span class="d-flex">
+                          <span class="material-symbols-outlined me-1">
+                            share </span
+                          >{{ blog.shares }} shares
+                        </span>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
+              </NuxtLink>
             </li>
           </ul>
         </div>
@@ -106,7 +110,9 @@ const blogList = ref([
   { id: 9, name: "AI 趨勢應用" },
 ]);
 const blogClick = ref(1);
-const { data: blogs } = await useFetch("/api/blogs");
+const { data: blogs } = await useAsyncData("blog-list", () => {
+  return queryCollection("blog").all();
+});
 
 const filterBlog = computed(() => {
   if (!blogs.value) return [];

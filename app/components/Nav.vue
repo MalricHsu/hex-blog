@@ -9,40 +9,34 @@
       </NuxtLink>
 
       <button
-        class="navbar-toggler"
+        class="navbar-toggler rounded-circle d-flex justify-content-center align-items-center"
         type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#navbarTogglerDemo02"
-        aria-controls="navbarTogglerDemo02"
-        aria-expanded="false"
+        aria-expanded="isOpen"
         aria-label="Toggle navigation"
+        @click="isOpen = !isOpen"
+        :style="{ width: '48px', height: '48px' }"
       >
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+      <div class="collapse navbar-collapse" :class="{ show: isOpen }">
         <ul class="list-unstyled fs-label-small ms-auto d-flex gap-6">
           <li class="py-1 px-3">
-            <NuxtLink to="/service" class="nav-link" aria-current="page"
-              >服務項目</NuxtLink
-            >
+            <NuxtLink to="/service" class="nav-link">服務項目</NuxtLink>
           </li>
           <li class="py-1 px-3">
-            <NuxtLink to="/project" class="nav-link" aria-current="page"
-              >專案作品</NuxtLink
-            >
+            <NuxtLink to="/project" class="nav-link">專案作品</NuxtLink>
           </li>
           <li class="py-1 px-3">
-            <NuxtLink to="/blog" class="nav-link" aria-current="page"
-              >部落格</NuxtLink
-            >
+            <NuxtLink to="/blog" class="nav-link">部落格</NuxtLink>
           </li>
           <li class="py-1 px-3">
-            <NuxtLink to="/" class="nav-link" aria-current="page"
-              >與我聯絡</NuxtLink
-            >
+            <NuxtLink to="/contact" class="nav-link">與我聯絡</NuxtLink>
           </li>
         </ul>
       </div>
     </div>
   </nav>
 </template>
+<script setup>
+const isOpen = ref(false);
+</script>

@@ -10,7 +10,7 @@
     }"
   >
     <SwiperSlide v-for="blog in blogs" :key="blog.id">
-      <NuxtLink to="/blog">
+      <NuxtLink :to="`/blog/${blog.id}`">
         <article>
           <img
             :src="blog.image"
