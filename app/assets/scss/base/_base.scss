@@ -153,6 +153,15 @@ p {
 }
 
 /* 響應式字級 */
+/* ≤1200px：大標先縮一階（平板/小桌機） */
+@media (max-width: 1200px) {
+  .fs-heading-xxx-large {
+    font-size: 56px;
+  }
+  .fs-heading-xx-large {
+    font-size: 40px;
+  }
+}
 @media (max-width: 768px) {
   .display-1 {
     font-size: 80px;

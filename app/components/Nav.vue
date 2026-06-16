@@ -30,7 +30,6 @@
       <div class="collapse navbar-collapse" :class="{ show: isOpen }">
         <ul
           class="list-unstyled fs-label-small d-flex flex-column flex-md-row text-center gap-3 gap-md-6 ms-md-auto py-3 py-md-0 mb-0"
-          @click="isOpen = false"
         >
           <li class="py-1 px-3">
             <NuxtLink to="/service" class="nav-link">服務項目</NuxtLink>
