@@ -16,9 +16,33 @@
     <div class="container py-10 py-md-20">
       <div class="row justify-content-center">
         <div class="col-md-8">
-          <p class="fs-paragraph-medium text-center mb-8 mb-md-10">
-            有任何專案合作或設計需求嗎？<br />歡迎填寫以下表單，我會盡快與你聯繫。
-          </p>
+          <div class="text-center mb-8 mb-md-10">
+            <h3 class="fs-heading-medium mb-3">讓我們聊聊你的下一個專案</h3>
+            <p class="fs-paragraph-medium mb-3">
+              無論是品牌識別、網頁設計，還是前端開發與系統串接，<br
+                class="d-none d-md-inline"
+              />我都樂意傾聽你的想法，並提供最適合的解決方案。
+            </p>
+            <p class="fs-paragraph-medium mb-0">
+              請填寫以下表單，告訴我你的需求與時程，<br
+                class="d-none d-md-inline"
+              />我會在 1～2 個工作天內主動與你聯繫，一起把想法變成作品。
+            </p>
+          </div>
+
+          <!-- 聯絡資訊 -->
+          <div
+            class="d-flex flex-column flex-md-row justify-content-center gap-3 gap-md-8 text-center mb-8 mb-md-10"
+          >
+            <div class="d-flex align-items-center justify-content-center gap-2">
+              <i class="bi bi-envelope fs-5"></i>
+              <span class="fs-paragraph-medium">service@hexschool.com</span>
+            </div>
+            <div class="d-flex align-items-center justify-content-center gap-2">
+              <i class="bi bi-clock fs-5"></i>
+              <span class="fs-paragraph-medium">回覆時間：週一至週五 10:00–18:00</span>
+            </div>
+          </div>
 
           <form>
             <div class="form-floating mb-4">

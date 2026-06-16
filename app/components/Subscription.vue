@@ -30,7 +30,6 @@
             <form @submit.prevent="submitEmail">
               <div class="form-floating mb-3 position-relative">
                 <input
-                  type="email"
                   class="form-control"
                   id="floatingInput"
                   placeholder="請輸入電子信箱"
@@ -79,11 +78,24 @@ const sending = ref(false);
 const successMsg = ref("");
 const errorMsg = ref("");
 
+const isValidEmail = (value) => {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(value);
+};
+
 const submitEmail = async () => {
-  sending.value = true;
+  if (!email.value) {
+    errorMsg.value = "請輸入電子信箱";
+    return;
+  }
+
+  if (!isValidEmail(email.value)) {
+    errorMsg.value = "請輸入電子信箱正確格式";
+    return;
+  }
   successMsg.value = "";
   errorMsg.value = "";
-
+  sending.value = true;
   try {
     const res = await axios.post("/api/send-email", { email: email.value });
     successMsg.value = res.data.message;

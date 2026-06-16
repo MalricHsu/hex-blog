@@ -52,7 +52,7 @@
         </div>
         <!-- 聯絡表單 -->
         <div class="col-md-7">
-          <form>
+          <form @submit.prevent="submitForm">
             <div class="row">
               <div class="col-12 col-md-6">
                 <div class="form-floating mb-4 mb-md-6">
@@ -61,6 +61,7 @@
                     class="form-control text-neutral-0 border-neutral-0"
                     id="contactName"
                     placeholder="姓名"
+                    v-model="name"
                   />
                   <label for="contactName" class="text-neutral-0">姓名</label>
                 </div>
@@ -72,6 +73,7 @@
                     class="form-control text-neutral-0 border-neutral-0"
                     id="contactPhone"
                     placeholder="手機號碼"
+                    v-model="phone"
                   />
                   <label for="contactPhone" class="text-neutral-0"
                     >手機號碼</label
@@ -86,6 +88,7 @@
                 class="form-control text-neutral-0 border-neutral-0"
                 id="contactEmail"
                 placeholder="電子信箱"
+                v-model="email"
               />
               <label for="contactEmail" class="text-neutral-0">電子信箱</label>
             </div>
@@ -96,19 +99,86 @@
                 id="contactRemark"
                 placeholder="備註"
                 style="height: 120px"
+                v-model="note"
               ></textarea>
               <label for="contactRemark" class="text-neutral-0">備註</label>
             </div>
 
             <button
               type="submit"
+              :disabled="sending"
               class="btn btn-neutral-0 text-neutral-700 rounded-999 w-100"
             >
-              送出
+              {{ sending ? "送出中…" : "送出" }}
             </button>
+
+            <!-- 訊息 -->
+            <div
+              v-if="successMsg"
+              class="d-flex align-items-center gap-2 mt-3 px-3 py-2 rounded fw-bold"
+              style="background-color: #d1e7dd; color: #157347"
+            >
+              <i class="bi bi-check-circle-fill"></i>
+              <span>{{ successMsg }}</span>
+            </div>
+            <div
+              v-if="errorMsg"
+              class="d-flex align-items-center gap-2 mt-3 px-3 py-2 rounded fw-bold"
+              style="background-color: #f8d7da; color: #b02a37"
+            >
+              <i class="bi bi-exclamation-circle-fill"></i>
+              <span>{{ errorMsg }}</span>
+            </div>
           </form>
         </div>
       </div>
     </div>
   </section>
 </template>
+
+<script setup>
+import axios from "axios";
+
+const name = ref("");
+const phone = ref("");
+const email = ref("");
+const note = ref("");
+
+const sending = ref(false);
+const successMsg = ref("");
+const errorMsg = ref("");
+
+const submitForm = async () => {
+  successMsg.value = "";
+  errorMsg.value = "";
+
+  const result = contactSchema.safeParse({
+    name: name.value,
+    phone: phone.value,
+    email: email.value,
+    note: note.value,
+  });
+
+  if (!result.success) {
+    errorMsg.value = result.error.issues
+      .map((issue) => issue.message)
+      .join("、");
+    return;
+  }
+
+  sending.value = true;
+
+  try {
+    const res = await axios.post("/api/send-footerContact", result.data);
+    successMsg.value = res.data.message;
+    name.value = "";
+    phone.value = "";
+    email.value = "";
+    note.value = "";
+  } catch (error) {
+    errorMsg.value = error.response?.data?.message || "送出失敗，請稍後再試";
+  } finally {
+    sending.value = false;
+  }
+};
+</script>
