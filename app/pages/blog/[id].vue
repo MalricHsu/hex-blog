@@ -27,7 +27,9 @@
     <div class="container py-md-20">
       <div class="row justify-content-md-center">
         <div class="col-md-10">
-          <div class="d-flex justify-content-md-between fs-paragraph-medium">
+          <div
+            class="d-flex flex-column flex-md-row justify-content-md-between fs-paragraph-medium"
+          >
             <p>{{ blog?.categories.join(" · ") }}</p>
             <time datetime="{{ blog?.date }}">{{ blog?.dateFormatted }}</time>
           </div>
