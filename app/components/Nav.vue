@@ -1,24 +1,24 @@
 <template>
-  <nav class="navbar navbar-expand-md bg-primary-50 sticky-top">
+  <nav class="navbar navbar-expand-lg bg-primary-50 sticky-top">
     <div class="container">
       <NuxtLink to="/" class="navbar-brand p-0 m-0">
         <!-- 手機：文字 logo -->
 
         <img
-          class="d-md-none"
+          class="d-lg-none"
           src="https://raw.githubusercontent.com/hexschool/2022-web-layout-training/47001d42324ec6a2c7d00cc74ea79d70c57d578a/2026-web-camp/device-mobile.svg"
           alt="pcLogo"
         />
-        <!-- md 以上：圖片 logo -->
+        <!-- lg 以上：圖片 logo -->
         <img
-          class="d-none d-md-block"
+          class="d-none d-lg-block"
           src="https://raw.githubusercontent.com/hexschool/2022-web-layout-training/47001d42324ec6a2c7d00cc74ea79d70c57d578a/2026-web-camp/device-pc.svg"
           alt="pcLogo"
         />
       </NuxtLink>
 
       <button
-        class="navbar-toggler d-md-none d-block rounded-circle d-flex justify-content-center align-items-center border-0"
+        class="navbar-toggler d-lg-none d-block rounded-circle d-flex justify-content-center align-items-center border-0"
         type="button"
         aria-expanded="isOpen"
         aria-label="Toggle navigation"
@@ -29,7 +29,7 @@
       </button>
       <div class="collapse navbar-collapse" :class="{ show: isOpen }">
         <ul
-          class="list-unstyled fs-label-small d-flex flex-column flex-md-row text-center gap-3 gap-md-6 ms-md-auto py-3 py-md-0 mb-0"
+          class="list-unstyled fs-label-small d-flex flex-column flex-lg-row text-center gap-3 gap-lg-6 ms-lg-auto py-3 py-lg-0 mb-0"
           @click="isOpen = false"
         >
           <li class="py-1 px-3">
@@ -52,3 +52,11 @@
 <script setup>
 const isOpen = ref(false);
 </script>
+<style scoped>
+.nav-link {
+  transition: color 0.2s;
+}
+.nav-link:hover {
+  color: #f5b87b; /* primary-500 強調色 */
+}
+</style>

@@ -3,8 +3,8 @@
   <section
     :style="`background: url('https://github.com/hexschool/2022-web-layout-training/blob/main/2026-web-camp/blog_banner.png?raw=true') center/cover;`"
   >
-    <div class="container py-12 py-md-22">
-      <div class="text-center mb-md-10">
+    <div class="container py-12 py-lg-22">
+      <div class="text-center mb-lg-10">
         <h2 class="fs-heading-xxx-large text-neutral-0 mb-2">BLOGS</h2>
         <p class="fs-heading-xx-large text-neutral-0">部落格</p>
       </div>
@@ -12,16 +12,16 @@
   </section>
   <!--列表區  -->
   <section>
-    <div class="container py-10 py-md-20">
+    <div class="container py-10 py-lg-20">
       <div class="row">
-        <div class="col-md-2">
+        <div class="col-lg-2">
           <ul
-            class="list-unstyled d-flex flex-md-column overflow-auto mb-6 mb-md-0"
+            class="category-scroll list-unstyled d-flex flex-lg-column overflow-auto mb-6 mb-lg-0"
           >
             <li
               v-for="item in blogList"
               :key="item.id"
-              class="fs-heading-xx-small flex-shrink-0 py-2 py-md-3 px-3 text-center"
+              class="fs-heading-xx-small flex-shrink-0 py-2 py-lg-3 px-3 text-center"
               :class="{ active: item.id === blogClick }"
               @click="blogClick = item.id"
               :style="{ cursor: 'pointer' }"
@@ -30,7 +30,7 @@
             </li>
           </ul>
         </div>
-        <div class="col-md-10">
+        <div class="col-lg-10">
           <ul class="list-unstyled">
             <li
               class="card-item"
@@ -40,7 +40,7 @@
             >
               <NuxtLink :to="blog.path">
                 <div class="row">
-                  <div class="col-md-6 mb-3 mb-md-0">
+                  <div class="col-lg-6 mb-3 mb-lg-0">
                     <img
                       :src="blog.image"
                       :alt="blog.title"
@@ -48,7 +48,7 @@
                     />
                   </div>
                   <div
-                    class="col-md-6 d-flex flex-column justify-content-center"
+                    class="col-lg-6 d-flex flex-column justify-content-center"
                   >
                     <div
                       class="d-flex align-items-center justify-content-start mb-3"
@@ -100,6 +100,7 @@
   <Subscription />
 </template>
 <script setup>
+useHead({ title: "部落格" });
 const blogList = ref([
   { id: 1, name: "全部" },
   { id: 2, name: "品牌設計" },
@@ -127,5 +128,25 @@ const filterBlog = computed(() => {
 .active {
   background-color: #24140b !important;
   color: #ffffff;
+}
+/* 分類列橫向滑動時藏掉捲軸 */
+.category-scroll {
+  scrollbar-width: none; /* Firefox */
+}
+.category-scroll::-webkit-scrollbar {
+  display: none; /* Chrome / Safari */
+}
+
+/* 卡片滑入浮起 */
+.card-item {
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.card-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+/* 左側分類 hover 提示（已選中的不變） */
+.fs-heading-xx-small:not(.active):hover {
+  background-color: #fdf7f1;
 }
 </style>

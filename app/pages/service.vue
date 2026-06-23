@@ -3,20 +3,20 @@
   <section
     :style="`background: url('https://github.com/hexschool/2022-web-layout-training/blob/main/2026-web-camp/service_banner.png?raw=true') top center/cover;`"
   >
-    <div class="container py-10 py-md-20">
-      <div class="text-center mb-8 mb-md-10">
+    <div class="container py-10 py-lg-20">
+      <div class="text-center mb-8 mb-lg-10">
         <h2 class="fs-heading-xxx-large text-neutral-0 mb-2">SERVICES</h2>
         <p class="fs-heading-xx-large text-neutral-0">服務項目</p>
       </div>
       <div class="row justify-content-center">
-        <div class="col-md-10">
+        <div class="col-lg-10">
           <ul
-            class="d-flex flex-wrap justify-content-center gap-4 gap-md-6 ps-0"
+            class="d-flex flex-wrap justify-content-center gap-4 gap-lg-6 ps-0"
           >
             <li
               v-for="(item, index) in service"
               :key="item.id"
-              class="service-tab bg-neutral-0 p-6 p-md-8 list-unstyled text-center"
+              class="service-tab bg-neutral-0 p-6 p-lg-8 list-unstyled text-center"
               :class="{ active: item.id === serviceID }"
               @click="serviceID = item.id"
             >
@@ -33,22 +33,22 @@
   </section>
   <!-- 服務流程 -->
   <section class="bg-primary-900">
-    <div class="container py-10 py-md-20">
-      <div class="row justify-content-md-center">
-        <div class="col-md-10">
+    <div class="container py-10 py-lg-20">
+      <div class="row justify-content-lg-center">
+        <div class="col-lg-10">
           <div class="row">
-            <div class="col-md-5 mb-8 mb-md-0">
+            <div class="col-lg-5 mb-8 mb-lg-0">
               <div>
                 <p class="fs-heading-xxx-small text-neutral-0">SERVICE STEPS</p>
                 <h2 class="fs-heading-xx-large text-neutral-0">服務流程</h2>
               </div>
             </div>
-            <div class="col-md-7">
+            <div class="col-lg-7">
               <ul class="list-unstyled">
                 <li
                   v-for="(step, index) in steps"
                   :key="index"
-                  class="step-item d-flex align-items-start gap-4 gap-md-6 mb-10"
+                  class="step-item d-flex align-items-start gap-4 gap-lg-6 mb-10"
                 >
                   <span
                     class="step-number flex-shrink-0 d-flex align-items-center justify-content-center bg-neutral-0 text-primary-900 rounded-999 fs-heading-small"
@@ -73,10 +73,10 @@
   </section>
   <!-- 客戶案例 -->
   <section>
-    <div class="container py-10 py-md-20">
-      <div class="row justify-content-md-center">
-        <div class="col-md-10">
-          <div class="mb-md-10">
+    <div class="container py-10 py-lg-20">
+      <div class="row justify-content-lg-center">
+        <div class="col-lg-10">
+          <div class="mb-lg-10">
             <p class="fs-heading-xxx-small">USER CASE</p>
             <h2 class="fs-heading-xx-large">客戶案例</h2>
           </div>
@@ -84,14 +84,14 @@
             <div
               v-for="project in topTwo"
               :key="project.id"
-              class="col-md-6 mb-8 mb-md-0"
+              class="col-lg-6 mb-8 mb-lg-0"
             >
               <img
                 class="case-img mb-3"
                 :src="project.imagesPc"
                 :alt="project.title"
               />
-              <div class="d-flex justify-content-md-between mb-3">
+              <div class="d-flex justify-content-lg-between mb-3">
                 <span class="fs-paragraph-medium">{{
                   project.category.join(" · ")
                 }}</span>
@@ -100,11 +100,11 @@
                 }}</time>
               </div>
               <h5 class="fs-heading-small mb-3">{{ project.title }}</h5>
-              <div class="d-flex justify-content-md-between align-items-center">
+              <div class="d-flex justify-content-lg-between align-items-center">
                 <p class="fs-paragraph-medium">{{ project.content }}</p>
                 <NuxtLink
                   to="/"
-                  class="text-neutral-0 fs-4 rounded-circle bg-neutral-700 p-3 flex-shrink-0 d-flex justify-content-center align-items-center"
+                  class="arrow-btn text-neutral-0 fs-4 rounded-circle bg-neutral-700 p-3 flex-shrink-0 d-flex justify-content-center align-items-center"
                   style="width: 48px; height: 48px"
                   ><i class="bi bi-arrow-up-right"></i
                 ></NuxtLink>
@@ -117,15 +117,15 @@
   </section>
   <!-- 常見問題 -->
   <section>
-    <div class="container py-10 py-md-20">
-      <div class="row justify-content-md-center">
-        <div class="col-md-10">
+    <div class="container py-10 py-lg-20">
+      <div class="row justify-content-lg-center">
+        <div class="col-lg-10">
           <div class="row">
-            <div class="col-md-6 mb-6 mb-md-0">
+            <div class="col-lg-6 mb-6 mb-lg-0">
               <p class="fs-heading-xxx-small">FAQ</p>
               <h2 class="fs-heading-xx-large">常見問題</h2>
             </div>
-            <div class="col-md-6">
+            <div class="col-lg-6">
               <Accordion />
             </div>
           </div>
@@ -135,6 +135,7 @@
   </section>
 </template>
 <script setup>
+useHead({ title: "服務項目" });
 const { data: service } = await useFetch("/api/service");
 const { data: projects } = await useFetch("/api/projects");
 const topTwo = computed(() => {
@@ -186,7 +187,7 @@ li {
   position: absolute;
   top: 40px; /* 圓圈底部開始 */
   left: 20px; /* 圓圈寬度 56 的一半，對齊中心 */
-  bottom: -2.5rem; /* 補上 mb-md-10 的間距，連到下一個圓 */
+  bottom: -2.5rem; /* 補上 mb-10 的間距，連到下一個圓 */
   width: 1px;
   background-color: #ffffff; /* primary-500 */
   transform: translateX(-50%);
@@ -199,11 +200,24 @@ li {
   object-position: center;
 }
 
+/* 箭頭圓鈕 hover：放大 + 變深咖啡 */
+.arrow-btn {
+  transition: 0.2s;
+}
+.arrow-btn:hover {
+  transform: scale(1.1);
+  background-color: #24140b !important;
+}
+
 /* 服務項目卡片：桌機固定寬，手機 2 欄 */
 .service-tab {
   width: 187px;
 }
-@media (max-width: 768px) {
+/* 未選中的卡片 hover 提示 */
+.service-tab:not(.active):hover {
+  outline: 1px solid #f5b87b;
+}
+@media (max-width: 991.98px) {
   .service-tab {
     width: calc(50% - 0.5rem); /* 2 欄，扣掉 gap-4(1rem) 的一半 */
   }

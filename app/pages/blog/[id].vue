@@ -3,7 +3,7 @@
   <section class="bg-primary-900 text-neutral-0">
     <div class="container">
       <div class="row justify-content-center align-items-center">
-        <div class="col-md-10 p-0">
+        <div class="col-lg-10 p-0">
           <nav
             :style="{ '--bs-breadcrumb-divider': `'>'` }"
             aria-label="breadcrumb"
@@ -24,18 +24,18 @@
     </div>
   </section>
   <section>
-    <div class="container py-md-20">
-      <div class="row justify-content-md-center">
-        <div class="col-md-10">
+    <div class="container py-lg-20">
+      <div class="row justify-content-lg-center">
+        <div class="col-lg-10">
           <div
-            class="d-flex flex-column flex-md-row justify-content-md-between fs-paragraph-medium"
+            class="d-flex flex-column flex-lg-row justify-content-lg-between fs-paragraph-medium"
           >
             <p>{{ blog?.categories.join(" · ") }}</p>
             <time datetime="{{ blog?.date }}">{{ blog?.dateFormatted }}</time>
           </div>
 
           <ContentRenderer v-if="blog" :value="blog"></ContentRenderer>
-          <div class="d-flex justify-content-md-between fs-paragraph-medium">
+          <div class="d-flex justify-content-lg-between fs-paragraph-medium">
             <div class="d-flex align-items-center">
               <span class="d-flex me-3">
                 <span class="material-symbols-outlined me-1"> visibility </span
@@ -46,7 +46,7 @@
                 >{{ blog?.shares }} shares
               </span>
             </div>
-            <div class="d-flex gap-3 mb-md-6">
+            <div class="social-links d-flex gap-3 mb-lg-6">
               <NuxtLink to="https://www.google.com">
                 <span
                   class="d-flex align-items-center justify-content-center border border-1 border-neutral-700 rounded-circle"
@@ -78,8 +78,8 @@
     </div>
   </section>
   <section>
-    <div class="container py-md-20">
-      <div class="mb-md-10">
+    <div class="container py-lg-20">
+      <div class="mb-lg-10">
         <p class="fs-heading-xxx-small">相關文章</p>
         <h2 class="fs-heading-xx-large">RELATED BLOG</h2>
       </div>
@@ -92,6 +92,7 @@ const route = useRoute();
 const { data: blog } = await useAsyncData(route.path, () => {
   return queryCollection("blog").path(route.path).first();
 });
+useHead({ title: blog.value?.title });
 </script>
 <style scoped>
 /* 文章內文基本間距（_base.scss 把 margin 歸零了，這裡補回來） */
@@ -122,11 +123,20 @@ const { data: blog } = await useAsyncData(route.path, () => {
   height: auto;
 }
 
+/* 社群圓圈 hover：填深底、icon 變白 */
+.social-links span {
+  transition: 0.2s;
+}
+.social-links a:hover span {
+  background-color: #1e1e1e;
+  color: #fff;
+}
+
 /* 麵包屑分隔線 > 顏色（Bootstrap 用 ::before 畫，scoped 要 :deep()） */
 :deep(.breadcrumb-item + .breadcrumb-item::before) {
   color: #fff;
 }
-@media (max-width: 768px) {
+@media (max-width: 991.98px) {
   /* 最後一項（文章標題）過長時省略成 … */
   :deep(.breadcrumb-item:last-child) {
     max-width: 240px;
