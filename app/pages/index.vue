@@ -92,7 +92,11 @@
   <Subscription />
 </template>
 <script setup>
-useHead({ title: "首頁" });
+useSeoMeta({
+  title: "首頁",
+  description:
+    "Nelson — UIUX 設計師與前端工程師，專注將美學與程式結合，打造精緻的網頁體驗。",
+});
 </script>
 <style scoped>
 /* SERVICES 卡片：手機改成可左右滑動，lg 以上維持四欄 */

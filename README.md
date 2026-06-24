@@ -8,12 +8,13 @@
 
 ## ✨ 功能特色
 
-- **響應式設計（RWD）**：手機 / 平板 / 桌機皆完整適配。
+- **響應式設計（RWD）**：手機 / 平板 / 桌機皆完整適配，斷點設於 `lg`（992px）。
 - **部落格系統**：以 Nuxt Content 撰寫 Markdown 文章，支援分類篩選、文章詳情頁、麵包屑、相關文章輪播。
 - **服務頁**：可切換的服務項目、服務流程時間軸、客戶案例、FAQ 手風琴（純 Vue 控制，未依賴 Bootstrap JS）。
 - **專案作品頁**：分類標籤橫向滑動篩選。
-- **表單驗證**：訂閱電子報、聯絡表單，前後端共用 zod schema 驗證。
+- **表單驗證**：訂閱電子報、聯絡表單，前後端共用 Zod schema 驗證。
 - **全域通知（Toast）**：以 Pinia store 管理，任何頁面送出表單後右上角彈出提示。
+- **SEO**：每頁 `useSeoMeta` 設定標題、描述與 Open Graph 社群分享預覽。
 - **客製 favicon**：品牌色 N 字母標誌。
 
 ---
@@ -81,8 +82,9 @@ hex-blog/
 ├─ server/
 │  ├─ api/                # 表單送出 API（訂閱、聯絡）
 │  └─ utils/              # 假資料（service、projects、blogs…）
-├─ shared/utils/          # 前後端共用：zod 驗證 schema
+├─ shared/utils/          # 前後端共用：Zod 驗證 schema
 ├─ public/                # favicon.svg 等靜態檔
+├─ content.config.ts      # Nuxt Content collection 定義
 └─ nuxt.config.ts
 ```
 
@@ -95,6 +97,7 @@ hex-blog/
 ```md
 ---
 title: 文章標題
+description: 文章摘要（用於 SEO）
 image: 封面圖網址
 categories: [UIUX 設計, 前端技術]
 date: "2025-10-16"
@@ -112,18 +115,21 @@ shares: 2
 
 ---
 
-## 🧩 重點設計
+## 🌐 部署
 
-- **共用驗證 schema**：放在 `shared/utils/`，Nuxt 4 會自動匯入到「前端元件」與「伺服器 API」兩邊，確保前後端驗證一致。
-- **全域 Toast**：`app/stores/toast.js` 管理通知清單，`ToastContainer.vue` 負責顯示，`FormAlert.vue` 為通知外觀元件。
-- **響應式字級**：`_base.scss` 以 media query 在不同斷點調整 `.fs-heading-*` 字級，避免大標在小螢幕爆版。
+可部署至 Vercel、Netlify 等支援 Nuxt 的平台：
+
+```bash
+npm run build      # 產生 .output/
+# 或靜態輸出
+npm run generate   # 產生 .output/public/
+```
+
+將專案連結至平台後，建置指令使用 `nuxt build`、輸出目錄 `.output`，平台會自動偵測 Nuxt 並完成部署。
 
 ---
 
 ## 📝 備註
 
 - 表單送出 API 目前為示範用途（不會真的寄信／存資料庫）。
-
-```
-
-```
+- 若要做「線上新增文章」的後台，需將內容來源由 Markdown 改為資料庫。

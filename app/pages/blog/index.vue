@@ -100,7 +100,10 @@
   <Subscription />
 </template>
 <script setup>
-useHead({ title: "部落格" });
+useSeoMeta({
+  title: "部落格",
+  description: "分享 UIUX 設計、網頁設計、前端技術與 AI 趨勢應用的設計筆記。",
+});
 const blogList = ref([
   { id: 1, name: "全部" },
   { id: 2, name: "品牌設計" },

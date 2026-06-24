@@ -92,7 +92,14 @@ const route = useRoute();
 const { data: blog } = await useAsyncData(route.path, () => {
   return queryCollection("blog").path(route.path).first();
 });
-useHead({ title: blog.value?.title });
+useSeoMeta({
+  title: () => blog.value?.title,
+  description: () =>
+    blog.value?.description || blog.value?.title, // 沒寫 description 就用標題
+  ogType: "article",
+  ogImage: () => blog.value?.image, // 用文章封面當分享圖
+});
+
 </script>
 <style scoped>
 /* 文章內文基本間距（_base.scss 把 margin 歸零了，這裡補回來） */

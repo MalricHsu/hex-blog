@@ -42,7 +42,10 @@
   </section>
 </template>
 <script setup>
-useHead({ title: "專案作品" });
+useSeoMeta({
+  title: "專案作品",
+  description: "精選平面設計、網頁設計、前端切版與後端開發的專案作品集。",
+});
 const headerTag = [
   { id: 1, content: "全部" },
   { id: 2, content: "平面設計" },

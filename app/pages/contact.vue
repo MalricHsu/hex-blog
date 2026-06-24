@@ -109,7 +109,10 @@
 <script setup>
 import axios from "axios";
 definePageMeta({ layout: "no-footer" });
-useHead({ title: "聯絡我們" });
+useSeoMeta({
+  title: "聯絡我們",
+  description: "有專案合作或設計需求嗎？歡迎與 Nelson 聯繫，一起把想法變成作品。",
+});
 const toast = useToastStore();
 
 const name = ref("");

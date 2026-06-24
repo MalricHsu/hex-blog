@@ -8,6 +8,11 @@
     "Helvetica Neue", Arial, sans-serif;
 }
 
+/* 關閉跳頁時的平滑捲動（避免換頁畫面從下往上滑），改回瞬間到頂 */
+:root {
+  scroll-behavior: auto;
+}
+
 /* 全域套用字型、預設行高與字元間距 */
 body {
   font-family: var(--bs-font-sans-serif);

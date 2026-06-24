@@ -7,6 +7,7 @@ export default defineContentConfig({
       source: "blog/**/*.md", // 抓 content/blog 底下所有 md
       schema: z.object({
         // 你的 frontmatter 自訂欄位
+        description: z.string().optional(), // SEO 摘要
         image: z.string(),
         categories: z.array(z.string()),
         date: z.string(),

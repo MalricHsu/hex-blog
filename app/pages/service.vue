@@ -135,7 +135,10 @@
   </section>
 </template>
 <script setup>
-useHead({ title: "服務項目" });
+useSeoMeta({
+  title: "服務項目",
+  description: "提供品牌識別、網頁設計、前端切版與後端開發等專業服務。",
+});
 const { data: service } = await useFetch("/api/service");
 const { data: projects } = await useFetch("/api/projects");
 const topTwo = computed(() => {
