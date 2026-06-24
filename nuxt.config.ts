@@ -2,7 +2,7 @@
 export default defineNuxtConfig({
   modules: ["@nuxt/content", "@pinia/nuxt"],
   compatibilityDate: "2025-07-15",
-  devtools: { enabled: false },
+  devtools: { enabled: true },
   css: ["~/assets/scss/all.scss"],
   app: {
     head: {

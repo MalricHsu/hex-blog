@@ -31,7 +31,7 @@
             class="d-flex flex-column flex-lg-row justify-content-lg-between fs-paragraph-medium"
           >
             <p>{{ blog?.categories.join(" · ") }}</p>
-            <time datetime="{{ blog?.date }}">{{ blog?.dateFormatted }}</time>
+            <time :datetime="blog?.date">{{ blog?.dateFormatted }}</time>
           </div>
 
           <ContentRenderer v-if="blog" :value="blog"></ContentRenderer>
@@ -78,12 +78,12 @@
     </div>
   </section>
   <section>
-    <div class="container py-lg-20">
+    <div class="container py-lg-20 py-10">
       <div class="mb-lg-10">
         <p class="fs-heading-xxx-small">相關文章</p>
         <h2 class="fs-heading-xx-large">RELATED BLOG</h2>
       </div>
-      <IndexSwiperBlog />
+      <ClientOnly><IndexSwiperBlog /></ClientOnly>
     </div>
   </section>
 </template>
@@ -94,12 +94,10 @@ const { data: blog } = await useAsyncData(route.path, () => {
 });
 useSeoMeta({
   title: () => blog.value?.title,
-  description: () =>
-    blog.value?.description || blog.value?.title, // 沒寫 description 就用標題
+  description: () => blog.value?.description || blog.value?.title, // 沒寫 description 就用標題
   ogType: "article",
   ogImage: () => blog.value?.image, // 用文章封面當分享圖
 });
-
 </script>
 <style scoped>
 /* 文章內文基本間距（_base.scss 把 margin 歸零了，這裡補回來） */

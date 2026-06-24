@@ -85,7 +85,10 @@
           >
         </div>
       </div>
-      <IndexSwiperBlog />
+      <!-- 只在瀏覽器渲染 -->
+      <ClientOnly>
+        <IndexSwiperBlog />
+      </ClientOnly>
     </div>
   </section>
   <!-- 訂閱 -->

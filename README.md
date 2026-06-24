@@ -33,6 +33,16 @@
 
 ---
 
+## 🖥 渲染模式（SSR）
+
+本專案採 **SSR（伺服器端渲染）**，為 Nuxt 預設（`nuxt.config.ts` 未設 `ssr: false`）。
+
+- **運作方式**：整頁先在伺服器渲染成 HTML 送到瀏覽器，瀏覽器畫出後再以同一批元件接管互動（hydration）。爬蟲一進來即可取得完整內容，對 SEO 友善。
+- **資料抓取**：頁面初始資料一律用 `useFetch` / `useAsyncData`（伺服器抓取後隨 HTML 一併送出，瀏覽器不重抓）；使用者觸發的一次性動作（表單送出）才用 `$fetch` / `axios`。
+- **僅瀏覽器才能跑的內容**：會在水合時改動 DOM 的第三方套件（如輪播 Swiper）以 `<ClientOnly>` 包裹，避免 hydration mismatch；需用到 `window` / `document` / `localStorage` 的程式碼放在 `onMounted` 或 `<ClientOnly>` 內。
+
+---
+
 ## 🚀 開始使用
 
 ### 環境需求
@@ -127,9 +137,14 @@ npm run generate   # 產生 .output/public/
 
 將專案連結至平台後，建置指令使用 `nuxt build`、輸出目錄 `.output`，平台會自動偵測 Nuxt 並完成部署。
 
+### Vercel 與內容資料庫注意事項
+
+- 部署至 Vercel 時，server 程式碼會打包成 Serverless Function。`@nuxt/content` v3 底層的 SQLite 依賴 `better-sqlite3`（原生模組），不適合在 serverless 環境每次請求即時查詢。
+- 本專案的部落格文章在 **建置階段（prerender）** 即產生靜態頁，上線後不需即時查資料庫，因此可正常運作 —— 維持 Nuxt Content 的預設行為即可。
+- 若日後要加入「即時、會變動」的資料，請改用平台支援的雲端資料庫（如 Postgres、Upstash Redis），不要依賴本機 SQLite 檔。
+
 ---
 
 ## 📝 備註
 
 - 表單送出 API 目前為示範用途（不會真的寄信／存資料庫）。
-- 若要做「線上新增文章」的後台，需將內容來源由 Markdown 改為資料庫。
